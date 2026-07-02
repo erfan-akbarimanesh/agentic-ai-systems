@@ -1,0 +1,213 @@
+This architecture you mentioned is usually called Cognitive Agent Architecture; that is, designing an Agent based on the cognitive patterns of the human mind. The goal is for the Agent's behavior to resemble a cognitive cycle: understanding → thinking → planning → acting → learning → modifying.
+
+Overview 
+Environment / User 
+│ 
+▼ 
+┌───────────────┐ 
+│ Perception │ 
+│ (Input) │ 
+└──────┬───────┘ 
+▼ 
+┌───────────────┐ 
+│ Reasoning │ 
+│ (LLM Core) │ 
+└──────┬───────┘ 
+▼ 
+┌───────────────┐ 
+│ Planning │ 
+│ Task Strategy │ 
+└──────┬───────┘ 
+▼ 
+┌───────────────┐ 
+│ Action │ 
+│ Tools / MCP │ 
+└──────┬───────┘ 
+▼ 
+┌───────────────┐ 
+│ Observation │ 
+│ Tool Results │ 
+└──────┬───────┘ 
+▼ 
+┌───────────────┐ 
+│ Reflection │ 
+│ Self-Review │
+└─�
+│ Memory │
+│ Learn/Store │
+└─────────────────────
+│
+└─────── loop back to Reasoning
+In this model, the Agent always works in a cognitive loop.
+
+----------------------------------------===
+Main Architecture Components
+1. Perception
+This is where the Agent takes inputs.
+
+It can include:
+User message
+File
+Tool result
+Environment data
+Example:
+User: analyze this repository
+or
+Tool Result: database query result
+Perception is responsible for transforming data into a context that can be understood by the model.
+------------------------------------------------
+
+2. Reasoning
+This is where the LLM works.
+
+Model:
+Analyzes the problem
+Reads the context
+Decides what the next step is
+
+Example reasoning:
+The user wants architecture analysis.
+First I should inspect the repository structure.
+---------------------------------------
+
+3. Planning
+Reasoning decides what to do
+
+But Planning turns it into action steps.
+
+For example:
+Goal: analyze architecture
+
+Plan:
+1. read project structure
+2. inspect dependencies
+3. analyze modules
+4. detect coupling
+5. produce report
+-------------------------
+
+4. Action
+Here the Agent affects the world.
+
+Usually through MCP Tools.
+
+Example:
+filesystem.read_directory
+git.clone_repo
+database.query
+search.code
+
+In MCP architecture:
+Agent
+↓
+MCP Client
+↓
+MCP Server
+↓
+Tool
+-----------------------------------
+5. Observation
+After the Action, the Agent sees the result.
+
+For example:
+filesystem.read_directory → list of files
+or:
+database.query → rows
+Observation means converting the output of the tool into data that can be analyzed by the Agent.
+----------------------------------
+6. Reflection
+This section is very important and is present in advanced Agents.
+
+The Agent asks itself:
+
+Did the tool give a good result?
+
+Is the plan still correct?
+
+Should I change the path?
+
+Example:
+The directory scan was incomplete.
+I should inspect the src folder next.
+Reflection makes the Agent adaptive.
+----------------------------------------------------
+7. Memory
+Memory has two important types.
+
+Short-term memory
+Like human working memory.
+
+Things like:
+current task
+tool results
+conversation state
+Long-term memory
+Things the Agent learns:
+user preferences
+system knowledge
+previous findings
+Typically implemented with:
+vector database
+knowledge store
+session state
+.
+
+------------------------------------
+------------------------------------------
+-----------------------------------------
+Relationship of this architecture to MCP
+In this model:
+The Action layer
+is where the MCP comes in.
+
+That is:
+Perception
+Reasoning
+Planning
+│
+▼
+Action
+│
+(MCP)
+│
+Tools
+The MCP is actually the Agent's motor nervous system.
+
+Simple whiteboard version
+If you want to explain quickly:
+Perception
+↓
+Reasoning
+↓
+Planning
+↓
+Action (MCP)
+↓
+Observation
+↓
+Reflection
+↓
+Memory
+↓
+Loop
+Why this diagram is a maturity point
+Because when you understand this model, you understand that:
+
+Agent is not just an LLM.
+
+It is:
+LLM = reasoning engine
+Agent = cognitive system
+That is, a complete system:
+
+Sees
+Thinks
+Plans
+Acts
+Measures the result
+Learns
+To put it very briefly
+
+Agent cognitive architecture:
+Perception → Reasoning → Planning → Action → Reflection → Memory
+And this cycle repeats itself over and over again.
