@@ -1,4 +1,32 @@
-# agentic-ai-systems
+#Agentic AI Systems
+
+A deep architectural exploration of AI agents, MCP (Model Context Protocol),
+agent runtimes, memory systems, orchestration, distributed agent systems,
+and production-grade AI infrastructure.
+
+This repository focuses on understanding how modern AI agent systems are
+designed, executed, scaled, evaluated, and deployed in real-world environments.
+
+Topics include:
+
+- Agent Architecture
+- Agent Runtime Internals
+- MCP Engineering
+- Tool Execution Pipelines
+- Context Engineering
+- Memory Systems
+- Multi-Agent Orchestration
+- Distributed Agent Systems
+- Agent Observability
+- Evaluation Frameworks
+- AI Infrastructure
+- Production Engineering
+- AI Operating System Concepts
+
+The goal of this repository is to build a coherent systems-level understanding
+of Agentic AI — from cognitive architecture to runtime execution and scalable
+AI system design.
+
 \================================================================================
 
 AI AGENT + MCP ENGINEERING ROADMAP
