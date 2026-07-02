@@ -1,0 +1,55 @@
+Simple Overview - Full Agentic AI Stack / Diagram
+
+┌──────────────────────────────────────────┐
+│                Application Layer          │
+│  Chat Apps • AI Assistants • Automation   │
+└──────────────────────────────────────────┘
+                     │
+                     ▼
+┌──────────────────────────────────────────┐
+│                Agent Layer                │
+│ Planner Agent • Research Agent • DevAgent │
+│ Task Agents • Domain Agents               │
+└──────────────────────────────────────────┘
+                     │
+                     ▼
+┌──────────────────────────────────────────┐
+│            Orchestration Layer            │
+│ Workflow Engine • Planning • Delegation   │
+│ Multi‑Agent Coordination                  │
+└──────────────────────────────────────────┘
+                     │
+                     ▼
+┌──────────────────────────────────────────┐
+│               MCP Layer                   │
+│ Tools • Resources • Prompts               │
+│ Capability Discovery • Protocol Interface │
+└──────────────────────────────────────────┘
+                     │
+                     ▼
+┌──────────────────────────────────────────┐
+│               Tool Layer                  │
+│ APIs • Databases • Search • Code Exec     │
+│ External Services • SaaS Integrations     │
+└──────────────────────────────────────────┘
+                     │
+                     ▼
+┌──────────────────────────────────────────┐
+│              Memory Layer                 │
+│ Short‑Term Memory • Vector DB • Knowledge │
+│ User Context • Agent State                │
+└──────────────────────────────────────────┘
+                     │
+                     ▼
+┌──────────────────────────────────────────┐
+│           Model / Reasoning Layer         │
+│ GPT • Claude • Open Models • Embeddings   │
+│ Reasoning Engines • Sampling              │
+└──────────────────────────────────────────┘
+                     │
+                     ▼
+┌──────────────────────────────────────────┐
+│        Infrastructure / Runtime Layer     │
+│ GPU • Containers • Cloud • Networking     │
+│ Distributed Systems • Scaling             │
+└──────────────────────────────────────────┘
