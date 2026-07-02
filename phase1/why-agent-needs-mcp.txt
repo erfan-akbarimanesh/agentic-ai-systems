@@ -1,0 +1,34 @@
+Why is MCP essential for Agent-based systems?
+Because without tools, an Agent can only talk.
+
+But with MCP, an Agent can:
+read files
+query databases
+call APIs
+search documents
+execute workflows
+inspect systems
+modify resources
+
+That is, from:
+Language-only intelligence
+
+we get to:
+Action-capable intelligence
+
+-----------------------------
+A very strong mental model
+
+Remember this sentence:
+LLM thinks.
+Agent decides.
+MCP acts.
+Memory remembers.
+Reflection improves.
+
+Architectural translation:
+Model thinks.
+Agent decides.
+MCP acts.
+Memory remembers.
+Reflection improves.
