@@ -1,0 +1,68 @@
+TITLE:
+Agent Loop Lifecycle
+
+CORE IDEA:
+An AI Agent is not a single request/response system.
+It operates in a continuous cognitive loop:
+
+Goal → Plan → Act → Observe → Reflect → Repeat
+
+MAIN DIAGRAM:
+
+                 ┌────────────────────┐
+                 │     User Goal      │
+                 └─────────┬──────────┘
+                           ▼
+                 ┌────────────────────┐
+                 │   Build Context    │
+                 │ Memory + State     │
+                 └─────────┬──────────┘
+                           ▼
+                 ┌────────────────────┐
+                 │      Planning      │
+                 │ Task Breakdown     │
+                 └─────────┬──────────┘
+                           ▼
+                 ┌────────────────────┐
+                 │   Action Decision  │
+                 │ Choose next step   │
+                 └─────────┬──────────┘
+                           ▼
+                 ┌────────────────────┐
+                 │ Tool Execution     │
+                 │ via MCP            │
+                 └─────────┬──────────┘
+                           ▼
+                 ┌────────────────────┐
+                 │    Observation     │
+                 │ Read tool result   │
+                 └─────────┬──────────┘
+                           ▼
+                 ┌────────────────────┐
+                 │    Reflection      │
+                 │ Was result useful? │
+                 └─────────┬──────────┘
+                           ▼
+                 ┌────────────────────┐
+                 │   Update Memory    │
+                 └─────────┬──────────┘
+                           ▼
+                 ┌────────────────────┐
+                 │ Done ?             │
+                 └──────┬─────┬──────┘
+                        │Yes  │No
+                        ▼     │
+                  Final Answer│
+                              │
+                              └── loop
+
+TERMINATION CONDITIONS:
+
+1. Goal achieved
+2. Max iterations reached
+3. Tool failures exceeded threshold
+4. Confidence score sufficient
+5. User interruption
+
+IMPORTANT:
+Without loop control agents may enter infinite reasoning cycles.
