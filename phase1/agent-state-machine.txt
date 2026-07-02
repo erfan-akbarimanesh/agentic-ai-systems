@@ -1,0 +1,46 @@
+TITLE:
+Agent State Machine
+
+CORE IDEA:
+Agents often behave like a state machine.
+
+Each stage of the agent loop represents a system state.
+
+MAIN DIAGRAM:
+
+            ┌──────────┐
+            │   IDLE   │
+            └────┬─────┘
+                 ▼
+           ┌────────────┐
+           │ PLANNING   │
+           └────┬───────┘
+                ▼
+           ┌────────────┐
+           │ ACTING     │
+           │ Tool Call  │
+           └────┬───────┘
+                ▼
+           ┌────────────┐
+           │ OBSERVING  │
+           │ Tool Result│
+           └────┬───────┘
+                ▼
+           ┌────────────┐
+           │ REFLECTING │
+           │ Reasoning  │
+           └────┬───────┘
+                ▼
+           ┌────────────┐
+           │ COMPLETED  │
+           └────────────┘
+
+STATE TRANSITIONS:
+
+Planning → Action
+Action → Observation
+Observation → Reflection
+Reflection → Next Plan
+
+IMPORTANT:
+State machines help control complex agent workflows.
