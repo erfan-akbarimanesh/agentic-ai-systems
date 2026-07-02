@@ -1,0 +1,29 @@
+The difference between Agent and Chatbot
+
+Chatbot:
+input → LLM → output
+
+Agent:
+goal 
+↓
+plan 
+↓
+tools 
+↓
+memory 
+↓
+evaluation 
+↓
+iteration
+
+Agent is not just a prompt.
+
+Agent =
+runtime system
++ reasoning
++ tools
++ memory
++ control loop
+
+Agents are not prompted.
+Agents are runtimes.
