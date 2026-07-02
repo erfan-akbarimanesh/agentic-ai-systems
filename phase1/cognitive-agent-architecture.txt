@@ -1,213 +1,360 @@
-This architecture you mentioned is usually called Cognitive Agent Architecture; that is, designing an Agent based on the cognitive patterns of the human mind. The goal is for the Agent's behavior to resemble a cognitive cycle: understanding → thinking → planning → acting → learning → modifying.
+===============================================================================
+COGNITIVE AGENT ARCHITECTURE
+Designing Agents Based on the Human Cognitive Cycle
+===============================================================================
 
-Overview 
-Environment / User 
-│ 
-▼ 
-┌───────────────┐ 
-│ Perception │ 
-│ (Input) │ 
-└──────┬───────┘ 
-▼ 
-┌───────────────┐ 
-│ Reasoning │ 
-│ (LLM Core) │ 
-└──────┬───────┘ 
-▼ 
-┌───────────────┐ 
-│ Planning │ 
-│ Task Strategy │ 
-└──────┬───────┘ 
-▼ 
-┌───────────────┐ 
-│ Action │ 
-│ Tools / MCP │ 
-└──────┬───────┘ 
-▼ 
-┌───────────────┐ 
-│ Observation │ 
-│ Tool Results │ 
-└──────┬───────┘ 
-▼ 
-┌───────────────┐ 
-│ Reflection │ 
-│ Self-Review │
-└─�
-│ Memory │
-│ Learn/Store │
-└─────────────────────
-│
-└─────── loop back to Reasoning
-In this model, the Agent always works in a cognitive loop.
+This architecture is commonly called:
 
-----------------------------------------===
-Main Architecture Components
-1. Perception
-This is where the Agent takes inputs.
+Cognitive Agent Architecture
 
-It can include:
-User message
-File
-Tool result
-Environment data
+The idea is to design AI agents inspired by how human cognition works.
+
+Instead of a simple request → response model, the agent follows a
+continuous cognitive cycle:
+
+    understanding → thinking → planning → acting → learning → adapting
+
+The agent continuously interacts with its environment and improves
+its behavior through iterative reasoning loops.
+
+
+===============================================================================
+HIGH LEVEL COGNITIVE LOOP
+===============================================================================
+
+Environment / User
+        │
+        ▼
+┌─────────────────────┐
+│      Perception     │
+│        Input        │
+└──────────┬──────────┘
+           ▼
+┌─────────────────────┐
+│      Reasoning      │
+│      LLM Core       │
+└──────────┬──────────┘
+           ▼
+┌─────────────────────┐
+│       Planning      │
+│    Task Strategy    │
+└──────────┬──────────┘
+           ▼
+┌─────────────────────┐
+│        Action       │
+│     Tools / MCP     │
+└──────────┬──────────┘
+           ▼
+┌─────────────────────┐
+│     Observation     │
+│     Tool Results    │
+└──────────┬──────────┘
+           ▼
+┌─────────────────────┐
+│      Reflection     │
+│      Self Review    │
+└──────────┬──────────┘
+           ▼
+┌─────────────────────┐
+│        Memory       │
+│     Learn / Store   │
+└──────────┬──────────┘
+           │
+           └─────────────── loop back to Reasoning
+
+
+In this model the agent always operates in a continuous cognitive loop.
+
+
+===============================================================================
+MAIN ARCHITECTURE COMPONENTS
+===============================================================================
+
+
+1. PERCEPTION
+-------------------------------------------------------------------------------
+
+This is where the agent receives input from the outside world.
+
+Sources of input may include:
+
+• User messages
+• Files
+• Tool results
+• Environment data
+• API responses
+• System state
+
 Example:
+
 User: analyze this repository
+
 or
-Tool Result: database query result
-Perception is responsible for transforming data into a context that can be understood by the model.
-------------------------------------------------
 
-2. Reasoning
-This is where the LLM works.
+Tool Result:
+database query result
 
-Model:
-Analyzes the problem
-Reads the context
-Decides what the next step is
+The job of Perception is to convert raw inputs into a structured
+context that the model can understand.
+
+
+===============================================================================
+2. REASONING
+-------------------------------------------------------------------------------
+
+This is where the LLM operates.
+
+The reasoning engine:
+
+• analyzes the problem
+• reads the context
+• evaluates the current state
+• decides what the next step should be
 
 Example reasoning:
-The user wants architecture analysis.
-First I should inspect the repository structure.
----------------------------------------
 
-3. Planning
-Reasoning decides what to do
+"The user wants an architecture analysis.
+First I should inspect the repository structure."
 
-But Planning turns it into action steps.
 
-For example:
-Goal: analyze architecture
+In this architecture:
+
+LLM = reasoning engine
+
+
+===============================================================================
+3. PLANNING
+-------------------------------------------------------------------------------
+
+Reasoning determines the intent.
+
+Planning converts that intent into a concrete strategy.
+
+Example:
+
+Goal:
+Analyze repository architecture
 
 Plan:
+
 1. read project structure
 2. inspect dependencies
 3. analyze modules
 4. detect coupling
-5. produce report
--------------------------
+5. generate architecture report
 
-4. Action
-Here the Agent affects the world.
 
-Usually through MCP Tools.
+Planning transforms abstract reasoning into executable steps.
 
-Example:
+
+===============================================================================
+4. ACTION
+-------------------------------------------------------------------------------
+
+The Action layer is where the agent interacts with the external world.
+
+Actions are usually executed through tools.
+
+Typical examples:
+
 filesystem.read_directory
 git.clone_repo
 database.query
 search.code
+http.request
 
-In MCP architecture:
+
+In MCP-based systems the flow looks like this:
+
 Agent
-↓
+  │
+  ▼
 MCP Client
-↓
+  │
+  ▼
 MCP Server
-↓
+  │
+  ▼
 Tool
------------------------------------
-5. Observation
-After the Action, the Agent sees the result.
 
-For example:
+
+The Action layer is essentially the agent's capability execution system.
+
+
+===============================================================================
+5. OBSERVATION
+-------------------------------------------------------------------------------
+
+After performing an action, the agent receives the result.
+
+Examples:
+
 filesystem.read_directory → list of files
-or:
+
 database.query → rows
-Observation means converting the output of the tool into data that can be analyzed by the Agent.
-----------------------------------
-6. Reflection
-This section is very important and is present in advanced Agents.
 
-The Agent asks itself:
+API call → JSON response
 
-Did the tool give a good result?
 
-Is the plan still correct?
+Observation converts tool outputs into structured information
+that the agent can analyze.
 
-Should I change the path?
+Without observation the agent cannot understand the result
+of its actions.
 
-Example:
-The directory scan was incomplete.
-I should inspect the src folder next.
-Reflection makes the Agent adaptive.
-----------------------------------------------------
-7. Memory
-Memory has two important types.
 
-Short-term memory
-Like human working memory.
+===============================================================================
+6. REFLECTION
+-------------------------------------------------------------------------------
 
-Things like:
-current task
-tool results
-conversation state
-Long-term memory
-Things the Agent learns:
-user preferences
-system knowledge
-previous findings
-Typically implemented with:
-vector database
-knowledge store
-session state
-.
+Reflection is one of the key components of advanced agents.
 
-------------------------------------
-------------------------------------------
------------------------------------------
-Relationship of this architecture to MCP
-In this model:
-The Action layer
-is where the MCP comes in.
+The agent evaluates its own behavior.
 
-That is:
+Typical reflection questions:
+
+• Did the tool produce the expected result?
+• Is the current plan still valid?
+• Should the strategy change?
+• Did an error occur?
+
+
+Example reflection:
+
+"The directory scan was incomplete.
+I should inspect the src folder next."
+
+Reflection allows the system to adapt dynamically.
+
+
+===============================================================================
+7. MEMORY
+-------------------------------------------------------------------------------
+
+Agents typically maintain two major forms of memory.
+
+
+SHORT TERM MEMORY
+--------------------------------
+
+Equivalent to human working memory.
+
+Examples:
+
+• current task
+• conversation context
+• tool outputs
+• reasoning steps
+
+
+LONG TERM MEMORY
+--------------------------------
+
+Persistent knowledge the agent accumulates.
+
+Examples:
+
+• user preferences
+• system knowledge
+• past discoveries
+• learned patterns
+
+
+Typical implementations include:
+
+• vector databases
+• knowledge stores
+• graph databases
+• persistent session state
+
+
+Memory enables agents to improve across time.
+
+
+===============================================================================
+RELATIONSHIP TO MCP
+===============================================================================
+
+Within the cognitive architecture the MCP layer exists
+inside the Action stage.
+
+Architecture relationship:
+
 Perception
+    │
 Reasoning
+    │
 Planning
-│
+    │
 ▼
 Action
-│
-(MCP)
-│
+    │
+    │ (MCP)
+    ▼
 Tools
-The MCP is actually the Agent's motor nervous system.
 
-Simple whiteboard version
-If you want to explain quickly:
+
+MCP effectively acts as the agent's:
+
+"motor nervous system"
+
+It allows the cognitive system to interact with external capabilities.
+
+
+===============================================================================
+WHITEBOARD VERSION (SIMPLIFIED)
+===============================================================================
+
 Perception
-↓
+    ↓
 Reasoning
-↓
+    ↓
 Planning
-↓
+    ↓
 Action (MCP)
-↓
+    ↓
 Observation
-↓
+    ↓
 Reflection
-↓
+    ↓
 Memory
-↓
+    ↓
 Loop
-Why this diagram is a maturity point
-Because when you understand this model, you understand that:
 
-Agent is not just an LLM.
 
-It is:
-LLM = reasoning engine
-Agent = cognitive system
-That is, a complete system:
+This cycle continues until the task is complete.
 
-Sees
-Thinks
-Plans
-Acts
-Measures the result
-Learns
-To put it very briefly
 
-Agent cognitive architecture:
+===============================================================================
+WHY THIS MODEL MATTERS
+===============================================================================
+
+Understanding this architecture reveals a key insight:
+
+An agent is NOT just an LLM.
+
+
+LLM
+    = reasoning engine
+
+Agent
+    = complete cognitive system
+
+
+A full agent system can:
+
+• perceive information
+• reason about it
+• create plans
+• execute actions
+• observe outcomes
+• reflect on results
+• store knowledge
+
+
+In its simplest form:
+
 Perception → Reasoning → Planning → Action → Reflection → Memory
-And this cycle repeats itself over and over again.
+
+And the cycle repeats continuously.
+===============================================================================
